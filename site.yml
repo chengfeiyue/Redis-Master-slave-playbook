@@ -1,4 +1,6 @@
----
-- hosts: master
+- hosts: 10.236.192.24
+#- hosts: "{{ host }}"
+  become: yes
+  become_method: sudo
   roles:
-    - role: master
+  - install_redis

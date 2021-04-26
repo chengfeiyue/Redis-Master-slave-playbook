@@ -3,5 +3,4 @@
   become: yes
   become_method: sudo
   roles:
-    - role: install_redis
-  
+  - install_redis

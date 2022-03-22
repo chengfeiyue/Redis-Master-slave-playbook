@@ -20,6 +20,8 @@
   template: src=redis.conf.j2 dest=/usr/local/redis/redis_{{ duankou }}.conf
 - name: 7.替换配置文件中的master_ip
   shell: sed -i 's/^# slaveof.*/slaveof {{ master_ip }} {{ duankou }}/' /usr/local/redis/redis_{{ duankou }}.conf
+  shell:
+    cmd: echo {{ansible_default_ipv4.address}}
   when: ansible_default_ipv4.address == '"{{ slave_ip }}"'
 - name: 8.打开slave aof
   shell: sed -i 's/^appendonly.*/appendonly yes/' /usr/local/redis/redis_{{ duankou }}.conf

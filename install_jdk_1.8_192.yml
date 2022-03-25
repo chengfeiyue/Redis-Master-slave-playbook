@@ -1,3 +1,0 @@
-- hosts: master
-  roles:
-  - install_jdk_1.8_192

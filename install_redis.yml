@@ -1,9 +1,15 @@
-- hosts: master
+---
+- hosts: redis-master
   tasks:
     - debug:
-        msg: "{{ ansible_default_ipv4.address }} tttttttttttt"
-#- hosts: "{{ host }}"
+        msg: "{{ ansible_default_ipv4.address }}"
   become: yes
   become_method: sudo
   roles:
-  - install_redis
+    - role: redis-master
+
+- hosts: redis-slave
+  become: yes
+  become_method: sudo
+  roles:
+    - role: redis-slave

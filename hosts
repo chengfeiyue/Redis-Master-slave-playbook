@@ -1,0 +1,6 @@
+[redis-master]
+10.1.240.74
+
+[redis-slave]
+10.1.240.189
+

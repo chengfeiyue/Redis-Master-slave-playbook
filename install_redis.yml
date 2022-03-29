@@ -3,15 +3,13 @@
   tasks:
     - debug:
         msg: "{{ ansible_default_ipv4.address }}"
-  become: false
-  become_user: root
+  become: yes
   become_method: sudo
   roles:
     - role: redis-master
 
 - hosts: redis-slave
-  become: false
-  become_user: root
+  become: yes
   become_method: sudo
   roles:
     - role: redis-slave

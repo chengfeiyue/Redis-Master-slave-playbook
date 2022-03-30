@@ -2,4 +2,14 @@ duankou: 6379
 redis_version: 4.0.2
 maxmemory: 15032385536
 master_ip: 
-slave_ip: 
+slave_ip:
+password: 123qweASD
+deploy_folder: /usr/local
+
+### keepalived
+
+script_folder: "/etc/keepalived/script/"
+virtual_ipaddress: "192.168.34.100"
+virtual_router_id: "19"
+eth: "eth0"
+auth_pass: 1234

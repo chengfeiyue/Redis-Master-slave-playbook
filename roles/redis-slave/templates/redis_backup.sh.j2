@@ -1,0 +1,14 @@
+#!/bin/bash
+###/etc/keepalived/scripts/redis_backup.sh
+REDISCLI="{{deploy_folder}}/redis/bin/redis-cli  -a {{password}} -p 6379"
+LOGFILE="{{deploy_folder}}/redis/log/redis-state.log"
+pid=$$
+
+echo "`date +'%Y-%m-%d:%H:%M:%S'`|$pid|state:[master]" >> $LOGFILE
+echo "`date +'%Y-%m-%d:%H:%M:%S'`|$pid|state:[master] Being slave state..." >> $LOGFILE 2>&1
+echo "`date +'%Y-%m-%d:%H:%M:%S'`|$pid|state:[master] wait 10 sec for data sync from old master" >> $LOGFILE
+sleep 10
+echo "`date +'%Y-%m-%d:%H:%M:%S'`|$pid|state:[master] data rsync from old mater ok..." >> $LOGFILE
+echo "`date +'%Y-%m-%d:%H:%M:%S'`|$pid|state:[slaver] Run 'SLAVEOF {{slave_ip}}'" >> $LOGFILE
+$REDISCLI SLAVEOF {{slave_ip}}  >> $LOGFILE  2>&1
+echo "`date +'%Y-%m-%d:%H:%M:%S'`|$pid|state:[slaver] slave connect to {{slave_ip}} ok..." >> $LOGFILE

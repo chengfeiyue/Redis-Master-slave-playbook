@@ -12,4 +12,3 @@ script_folder: "/etc/keepalived/script/"
 virtual_ipaddress: "192.168.34.100"
 virtual_router_id: "19"
 eth: "eth0"
-auth_pass: 1234

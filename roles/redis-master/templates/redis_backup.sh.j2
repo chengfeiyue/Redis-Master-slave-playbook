@@ -1,7 +1,7 @@
 #!/bin/bash
 ###/etc/keepalived/scripts/redis_backup.sh
 REDISCLI="{{deploy_folder}}/redis/bin/redis-cli  -a {{password}} -p 6379"
-LOGFILE="{{deploy_folder}}/redis/log/redis-state.log"
+LOGFILE="{{deploy_folder}}/redis/redis.log"
 pid=$$
 
 echo "`date +'%Y-%m-%d:%H:%M:%S'`|$pid|state:[master]" >> $LOGFILE

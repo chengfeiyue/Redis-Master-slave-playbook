@@ -12,7 +12,7 @@ vrrp_script chk_redis {
         interval 2
 }
 
-vrrp_instance VI_{{auth_pass}} {
+vrrp_instance VI_{{password}} {
     state MASTER
     nopreempt
     interface {{eth}}
@@ -21,7 +21,7 @@ vrrp_instance VI_{{auth_pass}} {
     advert_int 1
     authentication {
         auth_type PASS
-        auth_pass {{auth_pass}}
+        auth_pass {{password}}
     }
     virtual_ipaddress {
         {{virtual_ipaddress}}

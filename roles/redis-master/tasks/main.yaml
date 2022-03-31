@@ -16,6 +16,17 @@
   shell: /bin/echo {{ item }} >> /etc/profile && source /etc/profile
   with_items:
     - export PATH=\$PATH:/usr/local/redis/bin
+- name: 5.1 redis | 拷贝bin文件到远端机器的目录
+  copy:
+    src: "bin/{{item}}"
+    dest: "{{deploy_folder}}/redis/bin/{{item}}"
+    mode: 755
+  with_items:
+    - "redis-benchmark"
+    - "redis-check-aof"
+    - "redis-check-rdb"
+    - "redis-cli"
+    - "redis-server"
 - name: 6.替换配置文件(redis.conf)
   template: src=redis.conf.j2 dest=/usr/local/redis/redis_{{ duankou }}.conf
 - name: 7.替换配置文件中的master_ip

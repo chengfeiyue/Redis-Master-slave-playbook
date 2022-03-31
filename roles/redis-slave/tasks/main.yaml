@@ -37,7 +37,7 @@
   shell: sed -i 's/^appendonly.*/appendonly yes/' /usr/local/redis/redis_{{ duankou }}.conf
   when: ansible_default_ipv4.address == '{{ slave_ip }}'
 - name: 9.设置密码
-  shell: sed -i 's/^# masterauth.*/masterauth {{password}} /' /usr/local/redis/redis_{{ duankou }}.conf
+  shell: sed -i 's/^# requirepass.*/requirepass {{password}} /' /usr/local/redis/redis_{{ duankou }}.conf
 - name: 10.启动Redis
   shell: /usr/local/redis/bin/redis-server /usr/local/redis/redis_{{ duankou }}.conf
 
